@@ -1,3 +1,5 @@
+video  1
+
 date
 sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
 
@@ -40,6 +42,7 @@ sudo docker stop bf5
 
 date
 
+video 2
 
 date
 
@@ -55,6 +58,8 @@ sudo docker ps -a
 
 
 date
+
+video 3 
 
 date 
 sudo dnf install docker-compose-plugin -y
