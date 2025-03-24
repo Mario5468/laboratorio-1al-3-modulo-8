@@ -1,0 +1,120 @@
+date
+sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo dnf install docker-ce docker-ce-cli containerd.io 
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+sudo systemctl status docker
+
+sudo mkdir -p /home/website
+
+sudo docker  pull nginx 
+
+sudo docker run -d -p 8888:80 -v  /home/website:/usr/share/nginx/html --name nginx_server nginx
+
+sudo vi /home/website/index.html
+
+<html>
+<head>
+
+        <title>mi pagina prueba </title>
+</head>
+<body>
+        <h1>Mombre: Mario Abreu</h1>
+        <h1>Matricula: 2024-2369</h1>
+
+</body>
+</html>
+~       
+
+sudo docker ps 
+
+ifconfig 
+
+192.168.100.128:8888
+
+sudo docker stop bf5
+
+date
+
+
+date
+
+sudo docker pull portainer/portainer-ce
+
+sudo docker volume create portainer_data 
+
+sudo docker run -d -p  8000:8000 -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+
+sudo docker ps -a
+
+192.168.100.128:9000
+
+
+date
+
+date 
+sudo dnf install docker-compose-plugin -y
+
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
+
+sudo chmod +x/usr/local/bin/docker-compose
+
+sudo vi docker-compose.yml
+
+version: "3" 
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: MySQLRootPassword
+      MYSQL_DATABASE: MySQLDatabaseName
+      MYSQL_USER: MySQLUsername
+      MYSQL_PASSWORD: MySQLUserPassword
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: MySQLUsername
+      WORDPRESS_DB_PASSWORD: MySQLUserPassword
+      WORDPRESS_DB_NAME: MySQLDatabaseName
+    volumes:
+      - "./:/var/www/html"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: MySQLUsername
+      PMA_PASSWORD: MySQLUserPassword
+volumes:
+  mysql: {}
+
+
+sudo 
+
+
+colocar tu ip  y 80
+
+
+
+
+
+
+
+
+
+
+
+
